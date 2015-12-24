@@ -46,9 +46,14 @@ namespace ParallelConsoleApplication
                 numbers.Add(GetRandomNumberFromApi());
             }
 
+            DisplayResults(sw, numbers);
+        }
+
+        private static void DisplayResults(Stopwatch sw, List<int> numbers)
+        {
             sw.Stop();
 
-            Console.WriteLine("It Took {0} miliseconds to get {1} numbers", sw.ElapsedMilliseconds, numberOfTimes);
+            Console.WriteLine("It Took {0} miliseconds to get {1} numbers", sw.ElapsedMilliseconds, numbers.Count);
             Console.WriteLine(" ");
             Console.WriteLine("-----------------------------------------");
             Console.WriteLine(" ");
