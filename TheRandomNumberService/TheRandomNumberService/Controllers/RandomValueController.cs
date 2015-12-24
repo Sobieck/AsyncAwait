@@ -1,15 +1,24 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Http;
+using TheRandomNumberService.FakeDataAccess;
 
 namespace TheRandomNumberService.Controllers
 {
     [Route("api/random")]
     public class RandomValueController : ApiController
     {
-        public async Task<int> Get()
+        private IRandomNumberDataAccess randomNumberDataAccess;
+
+        public RandomValueController(IRandomNumberDataAccess randomNumberDataAccesss)
         {
-            throw new NotImplementedException();
+            randomNumberDataAccess = randomNumberDataAccesss;
+        }
+
+        public async Task<IHttpActionResult> Get()
+        {
+            var randomNumber = await randomNumberDataAccess.Get();
+
+            return Ok(randomNumber);
         }
     }
 }

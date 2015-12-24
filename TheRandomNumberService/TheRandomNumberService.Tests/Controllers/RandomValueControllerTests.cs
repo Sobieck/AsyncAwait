@@ -1,6 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+﻿using FakeItEasy;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Web.Http.Results;
 using TheRandomNumberService.Controllers;
+using TheRandomNumberService.FakeDataAccess;
 
 namespace TheRandomNumberService.Tests.Controllers
 {
@@ -8,19 +10,24 @@ namespace TheRandomNumberService.Tests.Controllers
     public class RandomValueControllerTest
     {
         private RandomValueController controller;
-        
+        private IRandomNumberDataAccess randomNumberDataAccess;
+
         [TestInitialize]
         public void Initialize()
         {
-            controller = new RandomValueController();
+            randomNumberDataAccess = A.Fake<IRandomNumberDataAccess>();
+
+            controller = new RandomValueController(randomNumberDataAccess);
         }
 
         [TestMethod]
         public void Get()
         {
-            var result = controller.Get().Result;
+            A.CallTo(() => randomNumberDataAccess.Get()).Returns(2);
 
-            Assert.AreEqual(2, result);
+            var result = controller.Get().Result as OkNegotiatedContentResult<int>;
+
+            Assert.AreEqual(2, result.Content);
         }
     }
 }
