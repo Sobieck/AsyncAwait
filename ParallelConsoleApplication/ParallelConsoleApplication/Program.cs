@@ -38,13 +38,18 @@ namespace ParallelConsoleApplication
         private static void GetSum(int numberOfTimes)
         {
             var numbers = new List<int>();
+            var tries = new List<string>();
+            for(var i = 0 ; i < numberOfTimes ; i++)
+            {
+                tries.Add(i.ToString());
+            }
 
             var sw = Stopwatch.StartNew();
 
-            for(var i = 0 ; i < numberOfTimes ; i++)
+            Parallel.ForEach(tries, x =>
             {
                 numbers.Add(GetRandomNumberFromApi());
-            }
+            });
 
             DisplayResults(sw, numbers);
         }
