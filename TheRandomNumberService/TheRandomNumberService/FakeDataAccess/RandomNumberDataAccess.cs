@@ -19,7 +19,7 @@ namespace TheRandomNumberService.FakeDataAccess
 
         public async Task<int> GetAsync()
         {
-            var delay = random.Next(200, 1000);
+            var delay = random.Next(20, 200);
 
             await Task.Delay(delay);
 
