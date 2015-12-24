@@ -11,7 +11,7 @@ namespace AsyncConsole
         {
             var result = GetOneHundredRandomNumbers().Result;
 
-            var sumOfRandomNumbers = result.Select(x => (long)x).Sum();
+            var sumOfRandomNumbers = result.Select(x => new BigInteger(x)).Sum();
 
             Console.WriteLine(sumOfRandomNumbers);
 
