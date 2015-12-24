@@ -5,13 +5,19 @@ using TheRandomNumberService.Controllers;
 namespace TheRandomNumberService.Tests.Controllers
 {
     [TestClass]
-    public class ValuesControllerTest
+    public class RandomValueControllerTest
     {
+        private RandomValueController controller;
+        
+        [TestInitialize]
+        public void Initialize()
+        {
+            controller = new RandomValueController();
+        }
+
         [TestMethod]
         public void Get()
         {
-            var controller = new ValuesController();
-
             var result = controller.Get().Result;
 
             Assert.AreEqual(2, result);

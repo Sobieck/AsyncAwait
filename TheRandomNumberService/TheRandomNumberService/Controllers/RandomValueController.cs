@@ -4,7 +4,8 @@ using System.Web.Http;
 
 namespace TheRandomNumberService.Controllers
 {
-    public class ValuesController : ApiController
+    [Route("api/random")]
+    public class RandomValueController : ApiController
     {
         public async Task<int> Get()
         {
