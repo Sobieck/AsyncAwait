@@ -69,7 +69,7 @@ namespace ParallelConsoleApplication
         {
             var number = 0;
 
-            var host = "http://localhost:59329/api/random";
+            var host = "http://api.leo-sanchez.com/api/random";
 
             using (var client = new HttpClient())
             {
