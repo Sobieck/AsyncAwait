@@ -9,7 +9,7 @@ namespace AsyncConsole
         {
             using (var client = new HttpClient())
             {
-                var result = await client.GetAsync("http://localhost:59329/api/random");
+                var result = await client.GetAsync("http://api.leo-sanchez.com/api/random");
 
                 return await result.Content.ReadAsAsync<int>();
             }
