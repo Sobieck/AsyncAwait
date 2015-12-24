@@ -64,7 +64,7 @@ namespace TheRandomNumberService.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IRandomNumberDataAccess>().To<RandomNumberDataAccess>();
+            kernel.Bind<IRandomNumberDataAccess>().ToConstant(new RandomNumberDataAccess());
         }        
     }
 }

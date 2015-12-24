@@ -5,7 +5,7 @@ namespace TheRandomNumberService.FakeDataAccess
 {
     public interface IRandomNumberDataAccess
     {
-        Task<int> Get();
+        Task<int> GetAsync();
     }
 
     public class RandomNumberDataAccess : IRandomNumberDataAccess
@@ -17,9 +17,9 @@ namespace TheRandomNumberService.FakeDataAccess
             random = new Random();
         }
 
-        public async Task<int> Get()
+        public async Task<int> GetAsync()
         {
-            var delay = random.Next(20, 200);
+            var delay = random.Next(200, 1000);
 
             await Task.Delay(delay);
 

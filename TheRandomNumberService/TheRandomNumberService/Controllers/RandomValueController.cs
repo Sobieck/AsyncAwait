@@ -16,7 +16,7 @@ namespace TheRandomNumberService.Controllers
 
         public async Task<IHttpActionResult> Get()
         {
-            var randomNumber = await randomNumberDataAccess.Get();
+            var randomNumber = await randomNumberDataAccess.GetAsync();
 
             return Ok(randomNumber);
         }

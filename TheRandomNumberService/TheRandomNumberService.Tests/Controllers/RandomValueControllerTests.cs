@@ -23,7 +23,7 @@ namespace TheRandomNumberService.Tests.Controllers
         [TestMethod]
         public void Get()
         {
-            A.CallTo(() => randomNumberDataAccess.Get()).Returns(2);
+            A.CallTo(() => randomNumberDataAccess.GetAsync()).Returns(2);
 
             var result = controller.Get().Result as OkNegotiatedContentResult<int>;
 
